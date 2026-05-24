@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-box">
+
+    <a class="logout-btn" href="{{ url_for('auth.logout') }}">Logout</a>
+
+    <h1>Welcome, {{ current_user.name }}</h1>
+    <h2>Your Dashboard</h2>
+
+    {% if current_user.role == "admin" %}
+        <a class="admin-panel-btn" href="{{ url_for('admin.admin_dashboard') }}">
+            Admin Panel
+        </a>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('tasks.add_task') }}">
+        <input type="text" name="title" placeholder="Task Title" required>
+        <textarea name="description" placeholder="Description" required></textarea>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <hr>
+
+    {% for task in tasks %}
+        <div class="task-card">
+            <h3>{{ task.title }}</h3>
+            <p>{{ task.description }}</p>
+            <p>Status: {{ task.status }}</p>
+
+            <a href="{{ url_for('tasks.complete_task', id=task.id) }}">Complete</a>
+            <a href="{{ url_for('tasks.delete_task', id=task.id) }}">Delete</a>
+        </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

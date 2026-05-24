@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-box">
+
+    <a class="logout-btn" href="{{ url_for('auth.logout') }}">Logout</a>
+
+    <h1>Admin Dashboard</h1>
+
+    <div class="stats-box">
+        <div class="stat-card"><h3>{{ total_users }}</h3><p>Total Users</p></div>
+        <div class="stat-card"><h3>{{ total_tasks }}</h3><p>Total Tasks</p></div>
+        <div class="stat-card"><h3>{{ completed_tasks }}</h3><p>Completed</p></div>
+        <div class="stat-card"><h3>{{ pending_tasks }}</h3><p>Pending</p></div>
+    </div>
+
+    <h2>All Users</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+
+        {% for user in users %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>All Task Activity</h2>
+
+    <table>
+        <tr>
+            <th>Task Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>User ID</th>
+        </tr>
+
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.user_id }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a class="admin-panel-btn" href="{{ url_for('tasks.dashboard') }}">Back to Dashboard</a>
+
+</div>
+{% endblock %}
