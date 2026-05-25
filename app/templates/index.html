@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="home-page">
+
+    <nav class="home-nav">
+        <div class="logo">Student Task Manager</div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('auth.login') }}">Login</a>
+            <a class="nav-register" href="{{ url_for('auth.register') }}">Register</a>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+
+        <div class="hero-left">
+            <div class="tagline">Cloud-Based • Secure • Easy to Use</div>
+
+            <h1>Cloud-Based<br>Student Task Manager</h1>
+
+            <p>
+                Manage your academic tasks, track productivity, and stay organized
+                securely from anywhere.
+            </p>
+
+            <div class="hero-buttons">
+                <a class="primary-btn" href="{{ url_for('auth.login') }}">Login</a>
+                <a class="secondary-btn" href="{{ url_for('auth.register') }}">Register</a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="preview-card">
+                <h3>Dashboard Preview</h3>
+
+                <div class="mini-stat">
+                    <span>Total Tasks</span>
+                    <strong>12</strong>
+                </div>
+
+                <div class="mini-stat">
+                    <span>Completed</span>
+                    <strong>8</strong>
+                </div>
+
+                <div class="mini-stat">
+                    <span>Pending</span>
+                    <strong>4</strong>
+                </div>
+
+                <div class="mini-task">Study for Cloud Computing Exam</div>
+                <div class="mini-task">Complete Database Assignment</div>
+                <div class="mini-task">Prepare Presentation</div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="feature-section">
+
+        <div class="feature-card">
+            <h3>Secure</h3>
+            <p>Login authentication, role-based access, HTTPS, and protected deployment.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Cloud-Based</h3>
+            <p>Hosted on AWS EC2 using Ubuntu, Gunicorn, and Nginx reverse proxy.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Productive</h3>
+            <p>Create, complete, and manage student tasks with a simple dashboard.</p>
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}
