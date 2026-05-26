@@ -60,23 +60,37 @@
 
     <section class="feature-section">
 
-        <div class="feature-card">
-            <h3>Secure</h3>
-            <p>Login authentication, role-based access, HTTPS, and protected deployment.</p>
-        </div>
+    <div class="feature-card">
+        <h3>Secure</h3>
 
-        <div class="feature-card">
-            <h3>Cloud-Based</h3>
-            <p>Hosted on AWS EC2 using Ubuntu, Gunicorn, and Nginx reverse proxy.</p>
-        </div>
+        <p>
+            HTTPS, bcrypt password hashing, role-based access,
+            API rate limiting, Fail2ban protection, CSP,
+            and security headers.
+        </p>
+    </div>
 
-        <div class="feature-card">
-            <h3>Productive</h3>
-            <p>Create, complete, and manage student tasks with a simple dashboard.</p>
-        </div>
+    <div class="feature-card">
+        <h3>Cloud Infrastructure</h3>
 
-    </section>
+        <p>
+            Hosted on AWS EC2 with RDS MySQL, S3 backups,
+            Docker, Gunicorn, Nginx reverse proxy,
+            and CloudWatch monitoring.
+        </p>
+    </div>
 
+    <div class="feature-card">
+        <h3>Monitoring & Automation</h3>
+
+        <p>
+            Automated backups, uptime monitoring,
+            systemd service management,
+            failed login tracking, and log rotation.
+        </p>
+    </div>
+
+</section>
 </div>
 
 {% endblock %}
