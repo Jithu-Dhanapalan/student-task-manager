@@ -1,3 +1,5 @@
+import logging
+
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user
 from app.extensions import db, bcrypt
@@ -5,6 +7,12 @@ from app.models.user import User
 from app import limiter
 
 auth = Blueprint("auth", __name__)
+
+logging.basicConfig(
+    filename="failed_logins.log",
+    level=logging.WARNING,
+    format="%(asctime)s - %(message)s"
+)
 
 
 @auth.route("/register", methods=["GET", "POST"])
@@ -69,6 +77,7 @@ def login():
 
             return redirect(url_for("tasks.dashboard"))
 
+        logging.warning(f"Failed login attempt for email: {email}")
         flash("Invalid email or password", "danger")
 
     return render_template("login.html")
