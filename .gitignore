@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 .env
 logs/
+failed_logins.log
