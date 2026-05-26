@@ -1,6 +1,10 @@
 from flask import Flask, render_template
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from config import Config
 from app.extensions import db, bcrypt, login_manager
+
+limiter = Limiter(key_func=get_remote_address)
 
 
 def create_app():
@@ -12,6 +16,7 @@ def create_app():
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
+    limiter.init_app(app)
 
     @app.route("/")
     def home():
