@@ -22,6 +22,10 @@ def create_app():
     def home():
         return render_template("index.html")
 
+    @app.route("/health/")
+    def health():
+        return {"status": "healthy"}
+
     from app.models.user import User
     from app.models.task import Task
 

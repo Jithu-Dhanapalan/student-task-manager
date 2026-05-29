@@ -90,3 +90,11 @@ def logout():
     flash("Logged out successfully.")
 
     return redirect(url_for("auth.login"))
+
+
+from flask import jsonify
+
+
+@auth.route("/health/")
+def health():
+    return jsonify({"status": "healthy"})
